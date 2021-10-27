@@ -1,12 +1,9 @@
 import Head from 'next/head'
 import CategoryList from '../components/CategoryList'
-import initFirebase from '../firebase/initFirebase'
-import { collection, addDoc } from 'firebase/firestore';
-import WriteToCloudFirestore from '../components/cloudFirestore/Write';
-initFirebase();
 
-export default function Home() {
 
+export default function Home({ categories }) {
+  console.log(categories);
   // function addCat() {
   //   const docRef = addDoc(collection(db, "categories"), {
   //     name: "test2"
@@ -23,9 +20,20 @@ export default function Home() {
       </Head>
       <div>
         {}
-        <WriteToCloudFirestore />
-        <CategoryList />
+        <CategoryList categories={categories}/>
       </div>
     </div>
   )
 }
+
+export const getServerSideProps = async (context) => {
+  var categories;
+  await fetch('https://cookbook-api-jt.herokuapp.com/api/categories/')
+        .then(res => res.json())
+        .then(data => {categories = data});
+  return {
+    props: {
+      categories,
+    },
+  };
+};
