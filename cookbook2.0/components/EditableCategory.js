@@ -8,9 +8,11 @@ function EditableCategory(props) {
 
     }
 
-    function handleUpdate() {
-
-    }
+    function handleUpdate(category) {
+        setIsEdit(false);
+        category.id = props.id;
+        props.onUpdateClick(category);
+    }   
 
     function handleCategoryRedir() {
         
@@ -24,7 +26,7 @@ function EditableCategory(props) {
                     name={props.name}
                     desription={props.description}
                     onCancelClick={setIsEdit(false)}
-                    onFormSubmit={handleUpdate}
+                    onFormSubmit={handleUpdate()}
                 />
             );
         } else {
@@ -32,6 +34,7 @@ function EditableCategory(props) {
                 <CategoryCard 
                     name={props.name}
                     description={props.description}
+                    onEditClick={() => {setIsEdit(true)}}
                     onDeleteClick={handleDelete()}
                     onCategoryClick={handleCategoryRedir()}
                 />

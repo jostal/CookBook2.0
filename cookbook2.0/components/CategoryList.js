@@ -9,6 +9,9 @@ function CategoryList(props) {
           id={category.category_id}
           name={category.category_name}
           description={category.description}
+          onDeleteClick={props.onDeleteClick}
+          onUpdateClick={props.onUpdateClick}
+          onCategoryClick={props.onCategoryClick}
         />
       ))}
     </div>

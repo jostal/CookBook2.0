@@ -20,7 +20,12 @@ export default function Home({ categories }) {
       </Head>
       <div>
         {}
-        <CategoryList categories={categories}/>
+        <CategoryList 
+          categories={categories}
+          onDeleteClick={deleteCategory()}
+          onUpdateClick={updateCategory()}
+          onCategoryClick={getCategory()}
+        />
       </div>
     </div>
   )
