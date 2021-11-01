@@ -9,8 +9,8 @@ export default function CategoryCard(props) {    // Card style category - displa
             <span className="font-bold text-xl mb-2">{props.name}</span>
           </div>
           <div className="ml-5">
-            <span onClick={props.onEditClick}><Image src="/editIcon.png" width="15" height="15"></Image></span>
-            <span className="ml-2" onClick={props.onDeleteClick}><Image src="/garbageIcon.png" width="15" height="15"></Image></span>
+            <span onClick={(evt) => {props.onEditClick(evt)}}><Image src="/editIcon.png" width="15" height="15"></Image></span>
+            <span className="ml-2" onClick={(evt) => {props.onDeleteClick(evt)}}><Image src="/garbageIcon.png" width="15" height="15"></Image></span>
           </div>
         </div>
           

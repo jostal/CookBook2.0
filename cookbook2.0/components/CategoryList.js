@@ -1,6 +1,7 @@
 import EditableCategory from './EditableCategory';
 
 function CategoryList(props) {
+
   return (
     <div className="flex justify-center">
       <div className="flex flex-col">
@@ -11,7 +12,7 @@ function CategoryList(props) {
             name={category.category_name}
             description={category.description}
             onDeleteClick={props.onDeleteClick}
-            onUpdateClick={props.onUpdateClick}
+            refreshCategories={props.refreshCategories}
             onCategoryClick={props.onCategoryClick}
           />
         ))}

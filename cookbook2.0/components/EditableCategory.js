@@ -1,4 +1,5 @@
 import CategoryCard from "./CategoryCard"
+import CategoryForm from "./CategoryForm";
 import { useState } from 'react';
 
 function EditableCategory(props) {
@@ -8,15 +9,26 @@ function EditableCategory(props) {
 
     }
 
-    function handleUpdate(category) {
+    function handleCancelClick(evt) {
+        evt.preventDefault();
         setIsEdit(false);
-        category.id = props.id;
-        props.onUpdateClick(category);
+    }
+
+    function handleEditClick(evt) {
+        evt.preventDefault();
+        setIsEdit(true);
+    }
+
+    function handleUpdate(evt) {
+        evt.preventDefault();
+        console.log("Updating Category...");
+        setIsEdit(false);
     }   
 
     function handleCategoryRedir() {
         
     }
+
 
     function checkEdit() {
         if (isEdit) {
@@ -25,16 +37,17 @@ function EditableCategory(props) {
                     id={props.id}
                     name={props.name}
                     desription={props.description}
-                    onCancelClick={setIsEdit(false)}
-                    onFormSubmit={handleUpdate()}
+                    onCancelClick={(evt) => {handleCancelClick(evt)}}
+                    onFormSubmit={(evt) => {handleUpdate(evt)}}
                 />
             );
         } else {
+            props.refreshCategories();
             return (
                 <CategoryCard 
                     name={props.name}
                     description={props.description}
-                    onEditClick={() => {setIsEdit(true)}}
+                    onEditClick={(evt) => {handleEditClick(evt)}}
                     onDeleteClick={handleDelete()}
                     onCategoryClick={handleCategoryRedir()}
                 />
@@ -45,6 +58,7 @@ function EditableCategory(props) {
   return (
     <div className="content-center">
       {checkEdit()}
+      {console.log(isEdit)}
     </div>
   )
 }

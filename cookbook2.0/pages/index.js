@@ -1,9 +1,8 @@
 import Head from 'next/head'
 import CategoryList from '../components/CategoryList'
 
-
 export default function Home({ categories }) {
-  console.log(categories);
+
   // function addCat() {
   //   const docRef = addDoc(collection(db, "categories"), {
   //     name: "test2"
@@ -15,12 +14,12 @@ export default function Home({ categories }) {
 
   }
 
-  function updateCategory() {
-
-  }
-
   function getCategory() {
     
+  }
+
+  async function refreshCategories() {
+    categories = await fetch('https://cookbook-api-jt.herokuapp.com/api/categories/');
   }
 
   return (
@@ -35,8 +34,9 @@ export default function Home({ categories }) {
         <CategoryList 
           categories={categories}
           onDeleteClick={deleteCategory()}
-          onUpdateClick={updateCategory()}
+          //onUpdateClick={updateCategory()}
           onCategoryClick={getCategory()}
+          refreshCategories={refreshCategories}
         />
       </div>
     </div>
