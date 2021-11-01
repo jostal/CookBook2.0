@@ -11,6 +11,18 @@ export default function Home({ categories }) {
   //   console.log("Document written with ID:", docRef.id);
   // }
 
+  function deleteCategory() {
+
+  }
+
+  function updateCategory() {
+
+  }
+
+  function getCategory() {
+    
+  }
+
   return (
     <div>
       <Head>
