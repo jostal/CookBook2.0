@@ -18,10 +18,6 @@ export default function Home({ categories }) {
     
   }
 
-  async function refreshCategories() {
-    categories = await fetch('https://cookbook-api-jt.herokuapp.com/api/categories/');
-  }
-
   return (
     <div>
       <Head>
@@ -36,7 +32,6 @@ export default function Home({ categories }) {
           onDeleteClick={deleteCategory()}
           //onUpdateClick={updateCategory()}
           onCategoryClick={getCategory()}
-          refreshCategories={refreshCategories}
         />
       </div>
     </div>

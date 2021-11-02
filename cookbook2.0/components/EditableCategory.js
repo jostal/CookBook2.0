@@ -1,9 +1,22 @@
 import CategoryCard from "./CategoryCard"
 import CategoryForm from "./CategoryForm";
-import { useState } from 'react';
+import CategoryList from "./CategoryList";
+import { useState, useEffect } from 'react';
 
 function EditableCategory(props) {
     const [isEdit, setIsEdit] = useState(false);
+    const [isUpdate, setIsUpdate] = useState(false);
+
+    useEffect(() => {
+        if (isUpdate) {
+            const timer = setTimeout(() => {
+                setIsUpdate(false);
+                window.location.reload();
+            }, 1000);
+            
+        }
+        //window.location.reload();
+    }, [isUpdate])
 
     function handleDelete() {
 
@@ -23,6 +36,7 @@ function EditableCategory(props) {
         evt.preventDefault();
         console.log("Updating Category...");
         setIsEdit(false);
+        setIsUpdate(true);
     }   
 
     function handleCategoryRedir() {
@@ -36,13 +50,12 @@ function EditableCategory(props) {
                 <CategoryForm 
                     id={props.id}
                     name={props.name}
-                    desription={props.description}
+                    description={props.description}
                     onCancelClick={(evt) => {handleCancelClick(evt)}}
                     onFormSubmit={(evt) => {handleUpdate(evt)}}
                 />
             );
         } else {
-            props.refreshCategories();
             return (
                 <CategoryCard 
                     name={props.name}

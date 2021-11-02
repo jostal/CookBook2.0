@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import Router from 'next/router';
 
 function CategoryForm(props) {
     const [catName, setCatName] = useState(props.name);
     const [catDesc, setCatDesc] = useState(props.description);
     const buttonText = props.id ? 'Update Category' : 'Create Category';
-    
+
     function handleFormSubmit (evt) {
         console.log(catDesc);
         evt.preventDefault();
@@ -28,13 +29,13 @@ function CategoryForm(props) {
                 </div>
                 <div class="mb-6">
                     <label class="block text-gray-700 text-sm font-bold mb-2" for="description">Description</label>
-                    <input class="shadow appearance-none border border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="description" type="text" value={catDesc} onChange={(evt) => {setCatDesc(evt.target.value)}} placeholder="Enter a Description"></input>
+                    <textarea class="shadow appearance-none border border rounded w-full py-3 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="description" type="text" value={catDesc} onChange={(evt) => {setCatDesc(evt.target.value)}} placeholder="Enter a Description"></textarea>
                 </div>
                 <div class="flex items-center justify-between">
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={(evt) => {handleFormSubmit(evt)}}>
-                        Submit
+                        {buttonText}
                     </button>
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" onClick={(evt) => {props.onCancelClick(evt)}}>
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ml-5" type="button" onClick={(evt) => {props.onCancelClick(evt)}}>
                         Cancel
                     </button>
                 </div>

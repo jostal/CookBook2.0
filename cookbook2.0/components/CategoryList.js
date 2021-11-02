@@ -12,7 +12,6 @@ function CategoryList(props) {
             name={category.category_name}
             description={category.description}
             onDeleteClick={props.onDeleteClick}
-            refreshCategories={props.refreshCategories}
             onCategoryClick={props.onCategoryClick}
           />
         ))}
