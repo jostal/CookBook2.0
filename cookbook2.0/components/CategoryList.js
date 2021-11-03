@@ -1,4 +1,5 @@
 import EditableCategory from './EditableCategory';
+import AddCategoryButton from './AddCategoryButton';
 
 function CategoryList(props) {
 
@@ -16,7 +17,7 @@ function CategoryList(props) {
           />
         ))}
       </div>
-      
+      <AddCategoryButton />
     </div>
   )
 }

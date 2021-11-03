@@ -1,21 +1,35 @@
 import { useState } from 'react';
 import Router from 'next/router';
+import { v1 as uuidv1 } from 'uuid';
 
 function CategoryForm(props) {
-    const [catName, setCatName] = useState(props.name);
-    const [catDesc, setCatDesc] = useState(props.description);
+    const [catName, setCatName] = useState(props.name) || '';
+    const [catDesc, setCatDesc] = useState(props.description) || '';
     const buttonText = props.id ? 'Update Category' : 'Create Category';
 
     function handleFormSubmit (evt) {
-        console.log(catDesc);
         evt.preventDefault();
-        fetch('https://cookbook-api-jt.herokuapp.com/api/categories/' + props.id + '/', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({"category_id": props.id, "category_name": catName, "description": catDesc})
-        })
+        if (buttonText === "Update Category") {
+            console.log("Updating Category...");
+            fetch('https://cookbook-api-jt.herokuapp.com/api/categories/' + props.id + '/', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({"category_id": props.id, "category_name": catName, "description": catDesc})
+            })
+        } else {
+            evt.preventDefault();
+                console.log("Creating Category...");
+                fetch('https://cookbook-api-jt.herokuapp.com/api/categories/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({"category_id": uuidv1(), "category_name": catName, "description": catDesc})
+                })
+        }
+        
         props.onFormSubmit(evt);
     }
 
