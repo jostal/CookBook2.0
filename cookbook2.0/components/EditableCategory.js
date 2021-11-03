@@ -12,14 +12,22 @@ function EditableCategory(props) {
             const timer = setTimeout(() => {
                 setIsUpdate(false);
                 window.location.reload();
-            }, 1000);
+            }, 500);
             
         }
         //window.location.reload();
     }, [isUpdate])
 
-    function handleDelete() {
-
+    function handleDelete(evt) {
+        console.log('Deleting...')
+        evt.preventDefault();
+        fetch('https://cookbook-api-jt.herokuapp.com/api/categories/' + props.id + '/', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+        setIsUpdate(true);
     }
 
     function handleCancelClick(evt) {
@@ -61,7 +69,7 @@ function EditableCategory(props) {
                     name={props.name}
                     description={props.description}
                     onEditClick={(evt) => {handleEditClick(evt)}}
-                    onDeleteClick={handleDelete()}
+                    onDeleteClick={handleDelete}
                     onCategoryClick={handleCategoryRedir()}
                 />
             );
