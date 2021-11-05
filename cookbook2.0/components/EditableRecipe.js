@@ -1,11 +1,9 @@
-import CategoryCard from "./CategoryCard"
-import CategoryForm from "./CategoryForm";
-import CategoryList from "./CategoryList";
+import RecipeCard from "./RecipeCard"
+import RecipeForm from "./RecipeForm";
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Link from "next/link";
 
-function EditableCategory(props) {
+function EditableRecipe(props) {
     const router = useRouter();
     const [isEdit, setIsEdit] = useState(false);
     const [isUpdate, setIsUpdate] = useState(false);
@@ -24,7 +22,7 @@ function EditableCategory(props) {
     function handleDelete(evt) {
         console.log('Deleting...')
         evt.preventDefault();
-        fetch('https://cookbook-api-jt.herokuapp.com/api/categories/' + props.id + '/', {
+        fetch('https://cookbook-api-jt.herokuapp.com/api/recipes/' + props.id + '/', {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -45,37 +43,43 @@ function EditableCategory(props) {
 
     function handleUpdate(evt) {
         evt.preventDefault();
-        console.log("Updating Category...");
+        console.log("Updating Recipe...");
         setIsEdit(false);
         setIsUpdate(true);
     }   
 
-    function handleCategoryRedir(evt) {
+    function handleRecipeRedir(evt) {
         evt.preventDefault();
-        console.log("Opening Category...");
-        router.push("recipes/" + props.name);
+        console.log("Opening Recipe...");
+        //router.push("recipes/" + props.name);
     }
 
 
     function checkEdit() {
         if (isEdit) {
             return (
-                <CategoryForm 
+                <RecipeForm 
                     id={props.id}
                     name={props.name}
                     description={props.description}
+                    ingredients={props.ingredients}
+                    procedure={props.procedure}
+                    author={props.author}
                     onCancelClick={(evt) => {handleCancelClick(evt)}}
                     onFormSubmit={(evt) => {handleUpdate(evt)}}
                 />
             );
         } else {
             return (
-                <CategoryCard 
+                <RecipeCard 
                     name={props.name}
                     description={props.description}
+                    ingredients={props.ingredients}
+                    procedure={props.procedure}
+                    author={props.author}
                     onEditClick={(evt) => {handleEditClick(evt)}}
                     onDeleteClick={handleDelete}
-                    onCategoryClick={handleCategoryRedir}
+                    onRecipeClick={handleRecipeRedir}
                 />
             );
         }
@@ -89,4 +93,4 @@ function EditableCategory(props) {
   )
 }
 
-export default EditableCategory;
+export default EditableRecipe;

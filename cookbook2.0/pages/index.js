@@ -26,7 +26,6 @@ export default function Home({ categories }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        {}
         <CategoryList 
           categories={categories}
           onDeleteClick={deleteCategory()}

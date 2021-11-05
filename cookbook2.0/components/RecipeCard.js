@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function CategoryCard(props) {    // Card style category - displays category info and edit/delete options
+export default function RecipeCard(props) {    // Card style category - displays category info and edit/delete options
   return (
     <div className="relative max-w-sm rounded overflow-hidden shadow-lg">
       <div className="ml-5 mr-5">
@@ -16,7 +16,7 @@ export default function CategoryCard(props) {    // Card style category - displa
           
           <div className="text-gray-700 text-base mb-3">
               {props.description}
-              <span onClick={(evt) => {props.onCategoryClick(evt)}} className="absolute right-2 bottom-1 text-lg"><Image src="/arrowIcon.webp" width="20" height="20"></Image></span>
+              <span onClick={(evt) => {props.onRecipeClick(evt)}} className="absolute right-2 bottom-1 text-lg"><Image src="/arrowIcon.webp" width="20" height="20"></Image></span>
           </div>
           
       </div>

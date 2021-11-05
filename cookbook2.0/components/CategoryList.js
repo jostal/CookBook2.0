@@ -16,8 +16,8 @@ function CategoryList(props) {
             onCategoryClick={props.onCategoryClick}
           />
         ))}
+        <AddCategoryButton />
       </div>
-      <AddCategoryButton />
     </div>
   )
 }

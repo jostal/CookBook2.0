@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import CategoryForm from "./CategoryForm";
+import RecipeForm from "./RecipeForm";
 import Image from 'next/image';
 
-export default function AddCategoryButton(props) {   
+export default function AddRecipeButton(props) {   
     const [isClicked, setIsClicked] = useState(false);
     const [isUpdate, setIsUpdate] = useState(false);
 
@@ -31,7 +31,7 @@ export default function AddCategoryButton(props) {
     function checkIfClicked() {
         if (isClicked) {
             return (
-                <CategoryForm
+                <RecipeForm
                     onCancelClick={(evt) => {handleCancelClick(evt)}}
                     onFormSubmit={(evt) => {handleUpdate(evt)}}
                 />
