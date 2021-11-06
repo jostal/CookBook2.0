@@ -38,7 +38,7 @@ export default function AddCategoryButton(props) {
             )
         } else {
             return (
-                <button className="bg-yellow-600 rounded mt-2 float-right" onClick={() => setIsClicked(true)}><Image src="/addIcon.png" height="40" width="40"></Image></button>
+                <button className="bg-green-500 h-10 rounded-full mt-2 float-right mt-2 float-right" onClick={() => setIsClicked(true)}><Image src="/addIcon.png" height="40" width="40"></Image></button>
             )
         }
     }

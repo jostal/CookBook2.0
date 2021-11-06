@@ -51,7 +51,7 @@ function EditableRecipe(props) {
     function handleRecipeRedir(evt) {
         evt.preventDefault();
         console.log("Opening Recipe...");
-        //router.push("recipes/" + props.name);
+        router.push("recipepage/" + props.id);
     }
 
 
@@ -60,6 +60,7 @@ function EditableRecipe(props) {
             return (
                 <RecipeForm 
                     id={props.id}
+                    category={props.category}
                     name={props.name}
                     description={props.description}
                     ingredients={props.ingredients}

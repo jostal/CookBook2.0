@@ -2,22 +2,6 @@ import Head from 'next/head'
 import CategoryList from '../components/CategoryList'
 
 export default function Home({ categories }) {
-
-  // function addCat() {
-  //   const docRef = addDoc(collection(db, "categories"), {
-  //     name: "test2"
-  //   });
-  //   console.log("Document written with ID:", docRef.id);
-  // }
-
-  function deleteCategory() {
-
-  }
-
-  function getCategory() {
-    
-  }
-
   return (
     <div>
       <Head>
@@ -28,9 +12,6 @@ export default function Home({ categories }) {
       <div>
         <CategoryList 
           categories={categories}
-          onDeleteClick={deleteCategory()}
-          //onUpdateClick={updateCategory()}
-          onCategoryClick={getCategory()}
         />
       </div>
     </div>

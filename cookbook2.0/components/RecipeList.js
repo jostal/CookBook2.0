@@ -10,6 +10,7 @@ function CategoryList(props) {
           <EditableRecipe 
             key={recipe.id}
             id={recipe.id}
+            category={recipe.category}
             name={recipe.recipe_name}
             description={recipe.description}
             ingredients={recipe.ingredients}
