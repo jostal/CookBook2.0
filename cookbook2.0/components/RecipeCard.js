@@ -8,7 +8,7 @@ export default function RecipeCard(props) {    // Card style category - displays
           <div>
             <span className="font-bold text-xl mb-2">{props.name}</span>
           </div>
-          <div className="absolute right-0">
+          <div className="flex right-0">
             <span onClick={(evt) => {props.onEditClick(evt)}}><Image src="/editIcon.png" width="15" height="15"></Image></span>
             <span className="ml-2" onClick={(evt) => {props.onDeleteClick(evt)}}><Image src="/garbageIcon.png" width="15" height="15"></Image></span>
           </div>

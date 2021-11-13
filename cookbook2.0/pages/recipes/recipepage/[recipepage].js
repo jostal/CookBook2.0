@@ -71,11 +71,11 @@ const RecipePage = ({ recipes }) => {
                     <span className="float-right m-8" onClick={(evt) => onEditClick(evt)}><Image src="/editIcon.png" width="15" height="15"></Image></span>
                     <div className="m-8">
                         <br />
-                        <h1 className="text-4xl"><strong>{recipeObj.recipe_name}</strong></h1>
+                        <h1 className="text-4xl" style={{"white-space": "pre-wrap"}}><strong>{recipeObj.recipe_name}</strong></h1>
                         <h1 className="text-lg"><em>Author:</em> {recipeObj.author}</h1> <br />
                         <h1 className="text-xl"><strong>Description</strong><br />{recipeObj.description}</h1><br />
-                        <h1 className="text-xl"><strong>Ingredients</strong><br />{recipeObj.ingredients}</h1><br />
-                        <h2 className="text-xl"><strong>Procedure</strong><br />{recipeObj.procedure}</h2> <br />
+                        <h1 className="text-xl"><strong>Ingredients</strong><br /><pre>{recipeObj.ingredients}</pre></h1><br />
+                        <h2 className="text-xl"><strong>Procedure</strong><br /><pre>{recipeObj.procedure}</pre></h2> <br />
                         <br />
                     </div>
                 </div>
